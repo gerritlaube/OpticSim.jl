@@ -25,18 +25,7 @@ NB.run_sample(&quot;EmittersIntro.jl&quot;)</code></pre><p>The <strong>run_sampl
     Vis.make2dy&#40;&#41;; Vis.save&#40;filename&#41;
     return sys
 end</code></pre>
-</div><pre class="documenter-example-output">sys = 8×5 DataFrame
- Row │ SurfaceType  Radius   Thickness    Material                           SemiDiameter
-     │ String       Float64  Float64?     Abstract…?                         Float64
-─────┼────────────────────────────────────────────────────────────────────────────────────
-   1 │ Object       Inf          Inf      Air                                     Inf
-   2 │ Standard      26.777        4.0    OpticSim.Examples.Examples_N_SK16         8.58
-   3 │ Standard      66.604        2.0    Air                                       7.513
-   4 │ Standard     -35.571        4.0    OpticSim.Examples.Examples_N_SF2          7.054
-   5 │ Stop          35.571        2.0    Air                                       6.033
-   6 │ Standard      35.571        4.0    OpticSim.Examples.Examples_N_SK16         7.003
-   7 │ Standard     -26.777       44.748  Air                                       7.506
-   8 │ Image        Inf      missing      missing                                  15.0</pre><p><img src="../assets/cooke.png" alt="Cooke triplet visualization"/></p><h2 id="Zoom-Lens"><a class="docs-heading-anchor" href="#Zoom-Lens">Zoom Lens</a><a id="Zoom-Lens-1"></a><a class="docs-heading-anchor-permalink" href="#Zoom-Lens" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_zoomlenses&#40;filenames::Vector&#123;&lt;:Union&#123;Nothing,AbstractString&#125;&#125; &#61; repeat&#40;&#91;nothing&#93;, 3&#41;&#41;
+</div><pre><code class="language-">sys = draw_cooketriplet(&quot;assets/cooke.png&quot;); @show sys; nothing # hide</code></pre><p><img src="assets/cooke.png" alt="Cooke triplet visualization"/></p><h2 id="Zoom-Lens"><a class="docs-heading-anchor" href="#Zoom-Lens">Zoom Lens</a><a id="Zoom-Lens-1"></a><a class="docs-heading-anchor-permalink" href="#Zoom-Lens" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_zoomlenses&#40;filenames::Vector&#123;&lt;:Union&#123;Nothing,AbstractString&#125;&#125; &#61; repeat&#40;&#91;nothing&#93;, 3&#41;&#41;
     stops &#61; &#91;2.89, 3.99, 4.90&#93;
     zooms &#61; &#91;9.48, 4.48, 2.00&#93;
     dists &#61; &#91;4.46970613, 21.21, 43.81&#93;
@@ -67,27 +56,7 @@ end</code></pre>
     end
     return syss
 end</code></pre>
-</div><pre class="documenter-example-output">syss[1] = 17×6 DataFrame
- Row │ SurfaceType  Radius     Parameters                         Thickness      Material       SemiDiameter
-     │ String       Float64    Array…?                            Float64?       Abstract…?     Float64
-─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ Object        Inf       missing                                Inf        Air               Inf
-   2 │ Stop          Inf       missing                                  0.0      Air                 2.89
-   3 │ Standard      -16.2022  missing                                  5.18     OHARA.S_LAH66       3.85433
-   4 │ Standard      -48.8759  missing                                  0.1      Air                 3.85433
-   5 │ Standard       15.6666  missing                                  4.4      NIKON.LLF6          4.36305
-   6 │ Aspheric      -42.9553  [&quot;4&quot;=&gt;0.00010386, &quot;6&quot;=&gt;1.4209e-7…        0.16     Air                 4.36305
-   7 │ Standard      108.696   missing                                  1.0      OHARA.S_TIH6        4.72506
-   8 │ Standard       23.6239  missing                                  4.96     OHARA.S_FSL5        4.72506
-   9 │ Aspheric      -16.0591  [&quot;4&quot;=&gt;4.2721e-5, &quot;6&quot;=&gt;1.2484e-7,…        9.48     Air                 4.72506
-  10 │ Aspheric     -425.532   [&quot;4&quot;=&gt;0.00011339, &quot;6&quot;=&gt;4.8165e-7…        4.04     OHARA.S_FSL5        4.45241
-  11 │ Standard      -35.4359  missing                                  1.35     Air                 4.45241
-  12 │ Standard      -14.1463  missing                                  1.0      OHARA.S_LAL8        4.50974
-  13 │ Standard     -251.256   missing                                  2.8      OHARA.S_FSL5        4.50974
-  14 │ Standard      -22.5023  missing                                  3.0      Air                 4.50974
-  15 │ Standard      -10.5831  missing                                  1.22     OHARA.S_LAH66       4.76271
-  16 │ Standard      -44.4444  missing                                  4.46971  Air                 4.76271
-  17 │ Image         Inf       missing                            missing        missing            15.0</pre><p><img src="../assets/zoom1.png" alt="Zoom position 1 visualization"/> <img src="../assets/zoom2.png" alt="Zoom position 2 visualization"/> <img src="../assets/zoom3.png" alt="Zoom position 3 visualization"/></p><h2 id="Schmidt-Cassegrain-Telescope"><a class="docs-heading-anchor" href="#Schmidt-Cassegrain-Telescope">Schmidt Cassegrain Telescope</a><a id="Schmidt-Cassegrain-Telescope-1"></a><a class="docs-heading-anchor-permalink" href="#Schmidt-Cassegrain-Telescope" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_schmidtcassegraintelescope&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
+</div><pre><code class="language-">syss = draw_zoomlenses([&quot;assets/zoom$i.png&quot; for i in 1:3]); @show syss[1]; nothing # hide</code></pre><p><img src="assets/zoom1.png" alt="Zoom position 1 visualization"/> <img src="assets/zoom2.png" alt="Zoom position 2 visualization"/> <img src="assets/zoom3.png" alt="Zoom position 3 visualization"/></p><h2 id="Schmidt-Cassegrain-Telescope"><a class="docs-heading-anchor" href="#Schmidt-Cassegrain-Telescope">Schmidt Cassegrain Telescope</a><a id="Schmidt-Cassegrain-Telescope-1"></a><a class="docs-heading-anchor-permalink" href="#Schmidt-Cassegrain-Telescope" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_schmidtcassegraintelescope&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
     # glass entrance lens on telescope
     topsurf &#61; Plane&#40;
         SVector&#40;0.0, 0.0, 1.0&#41;,
@@ -133,7 +102,7 @@ end</code></pre>
     Vis.save&#40;filename&#41;
     return nothing
 end</code></pre>
-</div><p><img src="../assets/tele.png" alt="Schmidt Cassegrain Telescope visualization"/></p><h2 id="Lens-Construction"><a class="docs-heading-anchor" href="#Lens-Construction">Lens Construction</a><a id="Lens-Construction-1"></a><a class="docs-heading-anchor-permalink" href="#Lens-Construction" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_lensconstruction&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
+</div><pre><code class="language-">draw_schmidtcassegraintelescope(&quot;assets/tele.png&quot;) # hide</code></pre><p><img src="assets/tele.png" alt="Schmidt Cassegrain Telescope visualization"/></p><h2 id="Lens-Construction"><a class="docs-heading-anchor" href="#Lens-Construction">Lens Construction</a><a id="Lens-Construction-1"></a><a class="docs-heading-anchor-permalink" href="#Lens-Construction" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_lensconstruction&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
     topsurface &#61; leaf&#40;
         AcceleratedParametricSurface&#40;
             QTypeSurface&#40;
@@ -162,7 +131,7 @@ end</code></pre>
     Vis.save&#40;filename&#41;
     return nothing
 end</code></pre>
-</div><p><img src="../assets/qtype.png" alt="lens construction example"/></p><h2 id="HOEs"><a class="docs-heading-anchor" href="#HOEs">HOEs</a><a id="HOEs-1"></a><a class="docs-heading-anchor-permalink" href="#HOEs" title="Permalink"></a></h2><h3 id="Focusing"><a class="docs-heading-anchor" href="#Focusing">Focusing</a><a id="Focusing-1"></a><a class="docs-heading-anchor-permalink" href="#Focusing" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_HOEfocus&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
+</div><pre><code class="language-">draw_lensconstruction(&quot;assets/qtype.png&quot;) # hide</code></pre><p><img src="assets/qtype.png" alt="lens construction example"/></p><h2 id="HOEs"><a class="docs-heading-anchor" href="#HOEs">HOEs</a><a id="HOEs-1"></a><a class="docs-heading-anchor-permalink" href="#HOEs" title="Permalink"></a></h2><h3 id="Focusing"><a class="docs-heading-anchor" href="#Focusing">Focusing</a><a id="Focusing-1"></a><a class="docs-heading-anchor-permalink" href="#Focusing" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_HOEfocus&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
     rect &#61; Rectangle&#40;5.0, 5.0, SVector&#40;0.0, 0.0, 1.0&#41;, SVector&#40;0.0, 0.0, 0.0&#41;&#41;
     int &#61; HologramInterface&#40;
         SVector&#40;0.0, -3.0, -20.0&#41;, ConvergingBeam,
@@ -184,7 +153,7 @@ end</code></pre>
     Vis.save&#40;filename&#41;
     return nothing
 end</code></pre>
-</div><p><img src="../assets/hoe_f.png" alt="Focusing HOE example"/></p><h3 id="Collimating"><a class="docs-heading-anchor" href="#Collimating">Collimating</a><a id="Collimating-1"></a><a class="docs-heading-anchor-permalink" href="#Collimating" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_HOEcollimate&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
+</div><pre><code class="language-">draw_HOEfocus(&quot;assets/hoe_f.png&quot;) # hide</code></pre><p><img src="assets/hoe_f.png" alt="Focusing HOE example"/></p><h3 id="Collimating"><a class="docs-heading-anchor" href="#Collimating">Collimating</a><a id="Collimating-1"></a><a class="docs-heading-anchor-permalink" href="#Collimating" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_HOEcollimate&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
     rect &#61; Rectangle&#40;5.0, 5.0, SVector&#40;0.0, 0.0, 1.0&#41;, SVector&#40;0.0, 0.0, 0.0&#41;&#41;
     int &#61; HologramInterface&#40;
         SVector&#40;0.1, -0.05, -1.0&#41;, CollimatedBeam,
@@ -206,7 +175,7 @@ end</code></pre>
     Vis.save&#40;filename&#41;
     return nothing
 end</code></pre>
-</div><p><img src="../assets/hoe_c.png" alt="Collimating HOE example"/></p><h3 id="Multi"><a class="docs-heading-anchor" href="#Multi">Multi</a><a id="Multi-1"></a><a class="docs-heading-anchor-permalink" href="#Multi" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_multiHOE&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
+</div><pre><code class="language-">draw_HOEcollimate(&quot;assets/hoe_c.png&quot;) # hide</code></pre><p><img src="assets/hoe_c.png" alt="Collimating HOE example"/></p><h3 id="Multi"><a class="docs-heading-anchor" href="#Multi">Multi</a><a id="Multi-1"></a><a class="docs-heading-anchor-permalink" href="#Multi" title="Permalink"></a></h3><div class="markdown"><pre><code class="language-julia">function draw_multiHOE&#40;filename::Union&#123;Nothing,AbstractString&#125; &#61; nothing&#41;
     rect &#61; Rectangle&#40;5.0, 5.0, SVector&#40;0.0, 0.0, 1.0&#41;, SVector&#40;0.0, 0.0, 0.0&#41;&#41;
     int1 &#61; HologramInterface&#40;
         SVector&#40;-5.0, 0.0, -20.0&#41;, ConvergingBeam,
@@ -237,8 +206,7 @@ end</code></pre>
     Vis.save&#40;filename&#41;
     return nothing
 end</code></pre>
-</div><pre class="documenter-example-output">┌ Warning: Order 1 not valid for this configuration, skipping this ray
-└ @ OpticSim ~/work/OpticSim.jl/OpticSim.jl/src/Optical/Grating.jl:282</pre><p><img src="../assets/hoe_m.png" alt="Multi-HOE example"/></p><h2 id="Deterministic-Raytracing"><a class="docs-heading-anchor" href="#Deterministic-Raytracing">Deterministic Raytracing</a><a id="Deterministic-Raytracing-1"></a><a class="docs-heading-anchor-permalink" href="#Deterministic-Raytracing" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_stackedbeamsplitters&#40;filenames::Vector&#123;&lt;:Union&#123;Nothing,AbstractString&#125;&#125; &#61; repeat&#40;&#91;nothing&#93;, 3&#41;&#41;
+</div><pre><code class="language-">draw_multiHOE(&quot;assets/hoe_m.png&quot;) # hide</code></pre><p><img src="assets/hoe_m.png" alt="Multi-HOE example"/></p><h2 id="Deterministic-Raytracing"><a class="docs-heading-anchor" href="#Deterministic-Raytracing">Deterministic Raytracing</a><a id="Deterministic-Raytracing-1"></a><a class="docs-heading-anchor-permalink" href="#Deterministic-Raytracing" title="Permalink"></a></h2><div class="markdown"><pre><code class="language-julia">function draw_stackedbeamsplitters&#40;filenames::Vector&#123;&lt;:Union&#123;Nothing,AbstractString&#125;&#125; &#61; repeat&#40;&#91;nothing&#93;, 3&#41;&#41;
     # ReflectOrTransmit: nondeterministic
     # Transmit: deterministic, all beamsplitters transmissive
     # Reflect: deterministic, all beamsplitters reflective
@@ -272,4 +240,4 @@ end</code></pre>
     end
     return nothing
 end</code></pre>
-</div><p><img src="../assets/deterministic_trace_1.png" alt="Nondeterministic Raytrace"/> <img src="../assets/deterministic_trace_2.png" alt="Transmission only"/> <img src="../assets/deterministic_trace_3.png" alt="Reflection only"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../basic_types/">Basic Types »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Friday 11 March 2022 19:36">Friday 11 March 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+</div><pre><code class="language-">draw_stackedbeamsplitters([&quot;assets/deterministic_trace_$i.png&quot; for i in 1:3]) # hide</code></pre><p><img src="assets/deterministic_trace_1.png" alt="Nondeterministic Raytrace"/> <img src="assets/deterministic_trace_2.png" alt="Transmission only"/> <img src="assets/deterministic_trace_3.png" alt="Reflection only"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../basic_types/">Basic Types »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Monday 23 May 2022 14:34">Monday 23 May 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
